@@ -50,7 +50,15 @@ of four different genotypes G1...4.
 [The data](Data.txt) is a tab-delimited file containing one experiment
 per row: the first column labels the type of target area, followed by
 a label describing the genotype; then we have the number of target and
-input neurons counted in that experiment.
+input neurons counted in that experiment. Here's the head of the data:
+
+|area | genotype | n_target | n_input|
+|:--|:--|:--|:--|
+|A1 | G1 | 1 | 2125|
+|A2 | G1 | 5 | 6153|
+|A1 | G2 | 9 | 2726|
+|A1 | G2 | 11 | 8813|
+
 
 ## The Question
 
