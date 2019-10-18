@@ -1,22 +1,24 @@
-## Background
+# Background
 
 We would like you to prepare a presentation, no longer than twenty
-minutes, on approaches to the following problem. This is an active
-project that we are working on within the group, so a comprehensive
-analysis is beyond our expectations - we're more keen to show you the
-sort of question we get asked, and to hear of any suggestions of
-approaches you might take.
+minutes, on approaches to any of the following problems. They are all
+questions that we have been asked by Crick scientists. We have given a
+selection so that you can chose which best allows you to express your
+talents, as we generally assign projects based on the closest match in
+skills.
+
+You're not expected to answer all of them: the first is the one
+that the current staff found the most challenging, whereas the other
+two are somewhat more traditional. 
 
 If you have any difficulties or concerns, please let me know at
 gavin.kelly@crick.ac.uk. We will post the responses to any questions
 here, so it may be worth checking it again.
 
-We have provided the data as tab-delimited file, so you can analyse
-the data with tools of your choosing; if you're under time pressure,
-we don't expect a large body of code or slides, we'd much rather that
-you consider the issues around such a question.
+We don't expect a large body of code or slides: we'd much rather that
+you consider the issues around your chosen question(s).
 
-## The Experiment
+# Q1) Neuron Connectivity
 
 Neurons are connected (via long, thin “wires”, called axons). One
 neuron receives and sends axons from/to thousands of neurons. Here we
@@ -68,5 +70,49 @@ areas. Can you think of a mechanistic model that would generate data
 of this type, so that rather than a purely empirical approach, we
 could start to estimate meaningful parameters about the underlying
 mechanisms?
+
+
+# Q2) Improving a Simplistic Analysis
+Patients' susceptibility to 'flu is assessed by repeatedly diluting
+serum down until a binary detection of the ability to respond to an
+infection is no longer positive.  This is done both before and after
+a patient has been treated with a candidate vaccine. The possible
+dilution ratios start at 1:10 and are then halved 1:20 all the way to
+1:1280. So if a sample passes at 1:10 and 1:20 and then fails it is
+recorded as "20" etc; a fail at 1:10 is recorded as "0", and if it never
+fails it is recorded as "1280".
+
+The [R script](flu.r) below, and in the repository, recreates one
+current methodolgy for summarising susceptibility per cohort.
+
+``` R
+library(tidyverse)
+raw_data <- read.csv("data/HI  H1N1 NH2019 CH.csv")
+long_data <- tidyr::gather(raw_data, key="PrePost", value="titer", Before, After)
+grouped_data  <- long_data %>%
+  mutate(measure=ifelse(titer<10, 5, titer)) %>%
+  group_by(strain, Age, Egg.Cell, PrePost) %>%
+  summarise(GMT=exp(mean(log(measure))))
+```
+What improvements would you make to this approach.
+
+
+# Q3) Experimental Design 
+A scientist comes to us wanting to run an experiment on a set of
+cell-lines (samples historically derived from individuals.)  Three
+represent individuals who responded to therapy; four are from
+individuals who didn't. These are the only cell-lines available that
+are relevant to the question.
+
+For each of these seven samples we propose assessing the expression of
+a number of genes (via an RNASeq assay) both on the untreated sample
+and also on the sample that has been treated in some way. The purpose
+being to assess, for each gene in turn, if the measure of expression
+(a number) differs consistently between the individuals labelled as
+responders, when compared to the non responders.
+
+What statistical model makes best use of these 3&#215;2 + 4&#215;2
+samples, or should the design be changed?
+
 
 
