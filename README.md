@@ -95,7 +95,7 @@ current methodolgy for summarising susceptibility per cohort.
 
 ``` R
 library(tidyverse)
-raw_data <- read.csv("data/HI  H1N1 NH2019 CH.csv")
+raw_data <- read.csv("flu.csv")
 long_data <- tidyr::gather(raw_data, key="PrePost", value="titer", Before, After)
 grouped_data  <- long_data %>%
   mutate(measure=ifelse(titer<10, 5, titer)) %>%
