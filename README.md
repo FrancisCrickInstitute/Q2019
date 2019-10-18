@@ -116,7 +116,7 @@ For each of these seven samples we propose assessing the expression of
 a number of genes (via an RNASeq assay) both on the untreated sample
 and also on the sample that has been treated in some way. The purpose
 being to assess, for each gene in turn, if the changes of expression
-due to treatment within the individuals labelled as responders, are
+due to treatment across the individuals labelled as responders, are
 different to those in the non-responder group.
 
 What statistical model makes best use of these 3&#215;2 + 4&#215;2
