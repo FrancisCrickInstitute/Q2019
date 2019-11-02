@@ -19,6 +19,8 @@ We don't expect a large body of code or slides: we'd much rather that
 you consider the issues around your chosen question(s).
 
 # Q1) Neuron Connectivity
+**Note, we previously had written that A1 and A2 were target
+areas. This has now been corrcted to stating they are input areas.**
 
 Neurons are connected (via long, thin “wires”, called axons). One
 neuron receives and sends axons from/to thousands of neurons. Here we
@@ -36,7 +38,7 @@ red colour) then travels (backwards) to all the upstream connected
 neurons (let’s call them input cells, n<sub>input</sub>). We then
 extract the brain and count target cells and input cells by simply
 counting green and red cells, respectively. There are two different
-types of target area A1 and A2; and the experiment is perfomed on mice
+types of input area A1 and A2; and the experiment is perfomed on mice
 of four different genotypes G1...4.
 
 ![Scientist's sketch of the setup](sketch.jpg)
@@ -121,6 +123,4 @@ different to those in the non-responder group.
 
 What statistical model makes best use of these 3&#215;2 + 4&#215;2
 samples, or should the design be changed?
-
-
 
